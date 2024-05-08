@@ -25,7 +25,7 @@ int main(int argc, char** argv)
 	{
 		cout << lights.toJson().dump(1, '\t') << endl;
 
-		while (true)
+		while (!GetAsyncKeyState(VK_ESCAPE))
 		{
 			Lights newLights;
 			if (newLights.getLights(&cli))
@@ -36,10 +36,6 @@ int main(int argc, char** argv)
 					
 					lights.lights = newLights.lights;
 				}
-			}
-			if (GetAsyncKeyState(VK_ESCAPE))
-			{
-				break;	//End polling loop if escape is pressed.
 			}
 			Sleep(1000);
 		}
